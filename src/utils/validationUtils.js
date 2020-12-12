@@ -1,3 +1,5 @@
+const ObjectId = require("mongoose").Types.ObjectId;
+
 const validateSchema = (schema, payload) => {
   const { error } = schema.validate(payload);
 
@@ -9,6 +11,16 @@ const validateSchema = (schema, payload) => {
   }
 };
 
+const validateObjectId = (id) => {
+  if (!ObjectId.isValid(id)) {
+    throw {
+      status: 400,
+      message: "Invalid id. It must match /^[0-9a-fA-F]{24}$/",
+    };
+  }
+};
+
 module.exports = {
-    validateSchema
+  validateSchema,
+  validateObjectId,
 };
