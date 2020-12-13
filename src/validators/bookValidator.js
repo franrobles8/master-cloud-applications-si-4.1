@@ -6,7 +6,7 @@ const postBookSchema = Joi.object({
   author: Joi.string(),
   publishingHouse: Joi.string(),
   publicationYear: Joi.number(),
-}).options({ presence: "required" });
+}).options({ presence: "required", allowUnknown: true });
 
 const postCommentSchema = Joi.object({
   nick: Joi.string(),

@@ -1,4 +1,3 @@
-const uuid = require("uuid");
 const { fullUrl } = require("../utils/urlUtils");
 const { validateSchema } = require("../utils/validationUtils");
 const {
@@ -6,12 +5,11 @@ const {
   postCommentSchema,
 } = require("../validators/bookValidator");
 const { validateObjectId } = require("../utils/validationUtils");
-const Book = require("../model/bookModel");
-const Comment = require("../model/commentModel");
+const BookService = require("../service/bookService");
 
-const getBooks = async (req, res) => {
+const getBooks = async (_, res) => {
   try {
-    const books = await Book.find({}).exec();
+    const books = await BookService.getBooks();
     res.json({ books });
   } catch (error) {
     const status = error.status || 500;
@@ -24,14 +22,8 @@ const getBook = async (req, res) => {
   try {
     validateObjectId(req.params.id);
 
-    const book = await Book.findById(req.params.id);
+    const book = await BookService.getBook(req.params.id);
 
-    if (!book) {
-      throw {
-        status: 404,
-        message: "Book not found",
-      };
-    }
     res.json(book);
   } catch (error) {
     const status = error.status || 500;
@@ -44,23 +36,7 @@ const postBook = async (req, res) => {
   try {
     validateSchema(postBookSchema, req.body);
 
-    const {
-      title,
-      summary,
-      author,
-      publishingHouse,
-      publicationYear,
-    } = req.body;
-
-    const book = new Book({
-      title,
-      summary,
-      author,
-      publishingHouse,
-      publicationYear,
-    });
-
-    await book.save();
+    const book = await BookService.postBook(req.body);
 
     res.location(fullUrl(req) + book.id);
     res.status(201).json({ id: book.id });
@@ -76,25 +52,7 @@ const postComment = async (req, res) => {
     validateObjectId(req.params.id);
     validateSchema(postCommentSchema, req.body);
 
-    const { nick, text, score } = req.body;
-
-    const book = await Book.findById(req.params.id);
-
-    if (!book) {
-      throw {
-        status: 404,
-        message: "Book not found",
-      };
-    }
-
-    const comment = new Comment({
-      nick,
-      text,
-      score,
-      bookId: req.params.id,
-    });
-
-    await comment.save();
+    const comment = await BookService.postComment(req.params.id, req.body);
 
     res.location(fullUrl(req) + comment.id);
     res.status(201).json({ id: comment.id });
@@ -110,27 +68,10 @@ const deleteComment = async (req, res) => {
     validateObjectId(req.params.id);
     validateObjectId(req.params.commentId);
 
-    const book = await Book.findById(req.params.id);
-
-    if (!book) {
-      throw {
-        status: 404,
-        message: "Book not found",
-      };
-    }
-
-    const comment = await Comment.findById(req.params.commentId);
-
-    if (!comment) {
-      throw {
-        status: 404,
-        message: "Comment not found",
-      };
-    }
-
-    const id = comment.id;
-
-    comment.delete();
+    const id = await BookService.deleteComment(
+      req.params.id,
+      req.params.commentId
+    );
 
     res.status(200).json({ id });
   } catch (error) {

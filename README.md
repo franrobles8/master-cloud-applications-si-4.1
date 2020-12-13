@@ -1,7 +1,8 @@
 # master-cloud-applications-si-4.1
 
 ## Node + MongoDB version:
-[Node](#)
 
-## SpringBoot + MySQL version:
-[Java](#)
+** To start the api, execute this command from the root of the Node folder: **
+```shell
+npm start
+```
