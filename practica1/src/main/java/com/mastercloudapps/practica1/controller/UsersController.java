@@ -2,12 +2,8 @@ package com.mastercloudapps.practica1.controller;
 
 
 import com.mastercloudapps.practica1.exception.UserWithCommentsException;
-import com.mastercloudapps.practica1.model.Book;
 import com.mastercloudapps.practica1.model.Comment;
 import com.mastercloudapps.practica1.model.User;
-import com.mastercloudapps.practica1.model.rest.BookSummaryDto;
-import com.mastercloudapps.practica1.model.rest.CommentsDto;
-import com.mastercloudapps.practica1.model.rest.UserDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;

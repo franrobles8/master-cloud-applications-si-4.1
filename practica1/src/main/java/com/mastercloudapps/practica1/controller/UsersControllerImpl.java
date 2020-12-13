@@ -3,7 +3,6 @@ package com.mastercloudapps.practica1.controller;
 import com.mastercloudapps.practica1.exception.NoUserException;
 import com.mastercloudapps.practica1.model.Comment;
 import com.mastercloudapps.practica1.model.User;
-import com.mastercloudapps.practica1.model.rest.UserDto;
 import com.mastercloudapps.practica1.service.UsersService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -11,11 +11,8 @@ public class CommentsService {
 
     private CommentsRepository commentsRepository;
 
-    private BooksService booksService;
-
-    public CommentsService(CommentsRepository commentsRepository, BooksService booksService) {
+    public CommentsService(CommentsRepository commentsRepository) {
         this.commentsRepository = commentsRepository;
-        this.booksService = booksService;
     }
 
     public List<Comment> findAllComments(String book_id) {

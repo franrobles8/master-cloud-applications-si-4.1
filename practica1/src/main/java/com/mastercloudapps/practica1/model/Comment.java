@@ -1,6 +1,5 @@
 package com.mastercloudapps.practica1.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,9 +12,12 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@ToString
 public class Comment implements Serializable {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = -5476831841312009177L;
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

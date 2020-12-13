@@ -5,4 +5,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value= HttpStatus.NOT_FOUND, reason="User has comments")
 public class NoUserException extends RuntimeException {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = -4111802484216075450L;
 }
