@@ -1,7 +1,7 @@
 const Joi = require("joi");
 
 const postUserSchema = Joi.object({
-  nick: Joi.string(),
+  nickname: Joi.string(),
   email: Joi.string(),
 }).options({ presence: "required" });
 

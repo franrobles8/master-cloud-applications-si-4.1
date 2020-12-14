@@ -41,7 +41,7 @@ const postBook = async (payload) => {
 };
 
 const postComment = async (id, payload) => {
-  const { nick, text, score } = payload;
+  const { nickname, text, score } = payload;
 
   const book = await Book.findById(id);
 
@@ -52,18 +52,18 @@ const postComment = async (id, payload) => {
     };
   }
 
-  const user = await User.findOne({ nick });
+  const user = await User.findOne({ nickname });
 
   if (!user) {
     throw {
       status: 404,
-      message: "The nick does not belong to any user",
+      message: "The nickname does not belong to any user",
     };
   }
 
   const comment = new Comment({
     email: user.email,
-    nick: nick.toLowerCase(),
+    nickname: nickname.toLowerCase(),
     text,
     score,
     bookId: id,

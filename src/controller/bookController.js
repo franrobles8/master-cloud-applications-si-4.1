@@ -73,7 +73,7 @@ const deleteComment = async (req, res) => {
       req.params.commentId
     );
 
-    res.status(200).json({ id });
+    res.json({ id });
   } catch (error) {
     const status = error.status || 500;
     const message = error.message || `Couldn't delete the comment`;

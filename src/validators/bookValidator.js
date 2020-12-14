@@ -9,7 +9,7 @@ const postBookSchema = Joi.object({
 }).options({ presence: "required", allowUnknown: true });
 
 const postCommentSchema = Joi.object({
-  nick: Joi.string(),
+  nickname: Joi.string(),
   text: Joi.string(),
   score: Joi.number().min(0).max(5),
 }).options({ presence: "required" });

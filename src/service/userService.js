@@ -14,19 +14,19 @@ const getUser = async (id) => {
 };
 
 const createUser = async (payload) => {
-  const { nick, email } = payload;
+  const { nickname, email } = payload;
 
-  const user = await User.findOne({ nick: nick.toLowerCase() });
+  const user = await User.findOne({ nickname: nickname.toLowerCase() });
 
   if (user) {
     throw {
       status: 403,
-      message: "The nick is already in use",
+      message: "The nickname is already in use",
     };
   }
 
   const newUser = new User({
-    nick,
+    nickname,
     email,
   });
 
@@ -61,7 +61,7 @@ const getComments = async (id) => {
     };
   }
 
-  return await Comment.find({ nick: user.nick }).exec();
+  return await Comment.find({ nickname: user.nickname }).exec();
 };
 
 const deleteUser = async (id) => {
@@ -74,7 +74,7 @@ const deleteUser = async (id) => {
     };
   }
 
-  const comments = await Comment.find({ nick: user.nick }).exec();
+  const comments = await Comment.find({ nickname: user.nickname }).exec();
 
   if (comments.length > 0) {
     throw {
