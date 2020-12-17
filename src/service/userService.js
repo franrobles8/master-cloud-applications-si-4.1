@@ -1,15 +1,21 @@
 const User = require("../model/userModel");
 const Comment = require("../model/commentModel");
 
+const {
+  UserExistsError,
+  UserNotFoundError,
+  UserWithCommentsError
+} = require("../error");
+
+const getUsers = async () => {
+  return await User.find({});
+};
+
 const getUser = async (id) => {
   const user = await User.findById(id);
 
-  if (!user) {
-    throw {
-      status: 404,
-      message: "User does not exist",
-    };
-  }
+  if (!user) throw new UserNotFoundError();
+
   return user;
 };
 
@@ -18,12 +24,7 @@ const createUser = async (payload) => {
 
   const user = await User.findOne({ nickname: nickname.toLowerCase() });
 
-  if (user) {
-    throw {
-      status: 403,
-      message: "The nickname is already in use",
-    };
-  }
+  if (user) throw new UserExistsError();
 
   const newUser = new User({
     nickname,
@@ -38,12 +39,7 @@ const updateEmail = async (id, payload) => {
 
   const user = await User.findById(id);
 
-  if (!user) {
-    throw {
-      status: 404,
-      message: "User does not exist",
-    };
-  }
+  if (!user) throw new UserNotFoundError();
 
   user.email = email;
   
@@ -54,12 +50,7 @@ const updateEmail = async (id, payload) => {
 const getComments = async (id) => {
   const user = await User.findById(id);
 
-  if (!user) {
-    throw {
-      status: 404,
-      message: "User not found",
-    };
-  }
+  if (!user) throw new UserNotFoundError();
 
   return await Comment.find({ nickname: user.nickname }).exec();
 };
@@ -67,20 +58,12 @@ const getComments = async (id) => {
 const deleteUser = async (id) => {
   const user = await User.findById(id);
 
-  if (!user) {
-    throw {
-      status: 404,
-      message: "User not found",
-    };
-  }
+  if (!user) throw new UserNotFoundError();
 
   const comments = await Comment.find({ nickname: user.nickname }).exec();
 
   if (comments.length > 0) {
-    throw {
-      status: 403,
-      message: "Cannot delete user because it has comments",
-    };
+    throw new UserWithCommentsError();
   }
 
   await user.delete();
@@ -88,6 +71,7 @@ const deleteUser = async (id) => {
 };
 
 module.exports = {
+  getUsers,
   getUser,
   createUser,
   updateEmail,

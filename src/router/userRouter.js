@@ -1,5 +1,6 @@
 const express = require("express");
 const {
+  getUsers,
   getUser,
   updateEmail,
   createUser,
@@ -9,6 +10,7 @@ const {
 
 const router = express.Router();
 
+router.get("/", getUsers);
 router.get("/:id", getUser);
 router.get("/:id/comments", getComments);
 router.post("/", createUser);

@@ -1,6 +1,11 @@
 const Book = require("../model/bookModel");
 const Comment = require("../model/commentModel");
 const User = require("../model/userModel");
+const {
+  BookNotFoundError,
+  UserNotFoundError,
+  CommentNotFoundError
+} = require("../error");
 
 const getBooks = async () => {
   return await Book.find({}).select("id title").exec();
@@ -9,12 +14,7 @@ const getBooks = async () => {
 const getBook = async (id) => {
   const book = await Book.findById(id);
 
-  if (!book) {
-    throw {
-      status: 404,
-      message: "Book not found",
-    };
-  }
+  if (!book) throw new BookNotFoundError();
 
   const comments = await Comment.find({ bookId: book.id })
     .select("-_id -score -bookId -__v")
@@ -45,21 +45,11 @@ const postComment = async (id, payload) => {
 
   const book = await Book.findById(id);
 
-  if (!book) {
-    throw {
-      status: 404,
-      message: "Book not found",
-    };
-  }
+  if (!book) throw new BookNotFoundError();
 
   const user = await User.findOne({ nickname });
 
-  if (!user) {
-    throw {
-      status: 404,
-      message: "The nickname does not belong to any user",
-    };
-  }
+  if (!user) throw new UserNotFoundError();
 
   const comment = new Comment({
     email: user.email,
@@ -75,21 +65,11 @@ const postComment = async (id, payload) => {
 const deleteComment = async (id, commentId) => {
   const book = await Book.findById(id);
 
-  if (!book) {
-    throw {
-      status: 404,
-      message: "Book not found",
-    };
-  }
+  if (!book) throw new BookNotFoundError();
 
   const comment = await Comment.findById(commentId);
 
-  if (!comment) {
-    throw {
-      status: 404,
-      message: "Comment not found",
-    };
-  }
+  if (!comment) throw new CommentNotFoundError();
 
   await comment.delete();
 
@@ -101,5 +81,5 @@ module.exports = {
   getBook,
   postBook,
   postComment,
-  deleteComment
+  deleteComment,
 };
