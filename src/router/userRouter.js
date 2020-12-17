@@ -14,7 +14,7 @@ router.get("/", getUsers);
 router.get("/:id", getUser);
 router.get("/:id/comments", getComments);
 router.post("/", createUser);
-router.put("/:id", updateEmail);
+router.patch("/:id", updateEmail);
 router.delete("/:id", deleteUser);
 
 module.exports = router;

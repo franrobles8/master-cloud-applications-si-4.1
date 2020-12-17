@@ -64,7 +64,7 @@ Responses: <br>
 
 ### Create a comment in a book:
 Method: **POST** <br>
-Route: `/books/:id/comments` <br>
+Route: `/comments/:id` <br>
 Ex. Payload: <br>
 
 ```json
@@ -82,12 +82,12 @@ Responses: <br>
 
 ### Delete a comment from a book:
 Method: **DELETE** <br>
-Route: `/books/:id/comments/:commentId` <br>
+Route: `/comments/:commentId` <br>
 Ex. Payload: **none** <br>
 Responses: <br>
 **200 (Success)** <br>
 **400 (Invalid id format)** <br>
-**404 (Book not found, Comment not found)** <br>
+**404 (Comment not found)** <br>
 **500 (Internal Server Error)** <br>
 
 ## Users routes:
@@ -139,7 +139,7 @@ Responses: <br>
 **500 (Internal Server Error)** <br>
 
 ### Update the email of a user:
-Method: **PUT** <br>
+Method: **PATCH** <br>
 Route: `/users/:id` <br>
 Ex. Payload:  <br>
 

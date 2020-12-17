@@ -62,11 +62,9 @@ const postComment = async (req, res) => {
 
 const deleteComment = async (req, res) => {
   try {
-    validateObjectId(req.params.id);
     validateObjectId(req.params.commentId);
 
     const id = await BookService.deleteComment(
-      req.params.id,
       req.params.commentId
     );
 

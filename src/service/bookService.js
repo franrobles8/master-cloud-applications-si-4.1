@@ -62,11 +62,7 @@ const postComment = async (id, payload) => {
   return await comment.save();
 };
 
-const deleteComment = async (id, commentId) => {
-  const book = await Book.findById(id);
-
-  if (!book) throw new BookNotFoundError();
-
+const deleteComment = async (commentId) => {
   const comment = await Comment.findById(commentId);
 
   if (!comment) throw new CommentNotFoundError();
