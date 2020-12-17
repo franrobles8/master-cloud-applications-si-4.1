@@ -16,11 +16,17 @@ La api contendrá los siguientes endpoints:
 
 | DESCRIPCIÓN                                                                                      | RUTA                                                          |
 |--------------------------------------------------------------------------------------------------|---------------------------------------------------------------|
-| Obtener un listado con el identificador y el título de cada uno de los libros                    | ```GET /api/books```                                          |
-| Obtener toda la información de un libro determinado (comentarios incluidos)                      | ```GET /api/books/{id}```                                     |
-| Crear un libro                                                                                   | ```POST /api/books```                                         |
-| Añadir comentario a un libro.                                                                    | ```POST /api/books/{id}/comments```                           |
-| Borrar un comentario.                                                                            | ```DELETE /api/books/{id}/comments/{commentId}```             |
+| Obtener un listado con el identificador y el título de cada uno de los libros.                   | ```GET /api/books```                                          |
+| Obtener toda la información de un libro determinado (comentarios incluidos).                     | ```GET /api/books/{bookId}```                                 |
+| Crear un libro.                                                                                  | ```POST /api/books```                                         |
+| Añadir comentario a un libro.                                                                    | ```POST /api/comments/{bookId}```                             |
+| Borrar un comentario.                                                                            | ```DELETE /api/comments/{commentId}```                        |
+| Consultar todos los usuarios.                                                                    | ```GET /api/users```                                          |
+| Consultar un usuario.                                                                            | ```GET /api/users/{userId}```                                 |
+| Consultar comentarios de un usuario.                                                             | ```GET /api/users/{userId}/comments```                        |
+| Añadir un usuario.                                                                               | ```POST /api/users```                                         |
+| Actualizar email de un usuario.                                                                  | ```PATCH /api/users/{userId}```                               |
+| Borrar un usuario.                                                                               | ```DELETE /api/users/{userId}```                              |
 
 Para probar los servicios (Ejemplos de JSON entrada/salida):
 
@@ -28,7 +34,7 @@ Para probar los servicios (Ejemplos de JSON entrada/salida):
 
 Para testear con Postman:
 
-* Usando la colección postman añadida en la carpeta postman (Los ID utilizados son aleatorios, usar el indicado).
+* Usando la colección postman añadida en la carpeta postman.
 
 ## Autores
 
