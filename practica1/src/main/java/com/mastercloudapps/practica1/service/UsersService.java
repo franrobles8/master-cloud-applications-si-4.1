@@ -1,6 +1,7 @@
 package com.mastercloudapps.practica1.service;
 
 import com.mastercloudapps.practica1.exception.NoUserException;
+import com.mastercloudapps.practica1.exception.UserAlreadyExistsException;
 import com.mastercloudapps.practica1.exception.UserWithCommentsException;
 import com.mastercloudapps.practica1.model.User;
 import com.mastercloudapps.practica1.repository.UsersRepository;
@@ -29,6 +30,9 @@ public class UsersService {
     }
 
     public String save(User user) {
+        Optional<User> findUser = usersRepository.findById(user.getNickname());
+        if (findUser.isPresent())
+            throw new UserAlreadyExistsException();
         return usersRepository.save(user).getNickname();
     }
 

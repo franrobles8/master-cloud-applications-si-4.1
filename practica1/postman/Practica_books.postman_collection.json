@@ -219,10 +219,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nickname\": \"pdparla2\",\r\n    \"email\": \"pd.parla@alumnos.urjc.as\"\r\n}"
+					"raw": "{\r\n    \"email\": \"pd.parla@alumnos.urjc.as\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/users/",
+					"raw": "http://localhost:8080/api/users/pdparla",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -231,7 +231,7 @@
 					"path": [
 						"api",
 						"users",
-						""
+						"pdparla"
 					]
 				},
 				"description": "Get an user"

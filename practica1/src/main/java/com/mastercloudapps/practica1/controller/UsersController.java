@@ -49,6 +49,7 @@ public interface UsersController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "User successfully created",
                     content = @Content(schema = @Schema(implementation = String.class))),
+            @ApiResponse(responseCode = "403", description = "User already exist"),
             @ApiResponse(responseCode = "500", description = "Internal server error") })
     @PostMapping(value="/")
     public ResponseEntity<String> postUser(@RequestBody User user);
@@ -62,8 +63,8 @@ public interface UsersController {
                     content = @Content(schema = @Schema(implementation = Void.class))),
             @ApiResponse(responseCode = "404", description = "User not exists"),
             @ApiResponse(responseCode = "500", description = "Internal server error") })
-    @PatchMapping(value="/")
-    public ResponseEntity<Void> updateEmail(@RequestBody User user);
+    @PatchMapping(value="/{nickname}")
+    public ResponseEntity<Void> updateEmail(@RequestBody User user, @PathVariable(value="nickname") String nickname);
 
     @Operation(
             summary = "Delete a user",

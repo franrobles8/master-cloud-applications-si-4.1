@@ -37,7 +37,8 @@ public class UsersControllerImpl implements UsersController {
     }
 
     @Override
-    public ResponseEntity<Void> updateEmail(User user) {
+    public ResponseEntity<Void> updateEmail(User user, String nickname) {
+        user.setNickname(nickname);
         usersService.updateEmail(user);
         return ResponseEntity.noContent().build();
     }
