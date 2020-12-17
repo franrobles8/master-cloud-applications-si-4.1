@@ -1,0 +1,330 @@
+{
+	"info": {
+		"_postman_id": "242a1648-7a0f-4d9d-b975-e1e8f07c1d0c",
+		"name": "Practica_books",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Comment: Add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"text\": \"New Comment\",\r\n  \"nickname\": \"pdparla\",\r\n  \"score\": 0.2\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/comments/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comments",
+						"1"
+					]
+				},
+				"description": "Add new Comment to an existing book"
+			},
+			"response": []
+		},
+		{
+			"name": "Book: Add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"string\",\r\n  \"summary\": \"string\",\r\n  \"author\": \"string\",\r\n  \"publishingHouse\": \"string\",\r\n  \"publicationYear\": 0\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/books/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"books",
+						""
+					]
+				},
+				"description": "Add a book"
+			},
+			"response": []
+		},
+		{
+			"name": "Book: Summary",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/books/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"books",
+						""
+					]
+				},
+				"description": "Add new Comment to an existing book"
+			},
+			"response": []
+		},
+		{
+			"name": "Users: Get all",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				},
+				"description": "Get all users"
+			},
+			"response": []
+		},
+		{
+			"name": "Users: Get one",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/users/pdparla",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"pdparla"
+					]
+				},
+				"description": "Get an user"
+			},
+			"response": []
+		},
+		{
+			"name": "Users: Get comments",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/users/pdparla/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"pdparla",
+						"comments"
+					]
+				},
+				"description": "Get an user"
+			},
+			"response": []
+		},
+		{
+			"name": "Users: Add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nickname\": \"pdparla2\",\r\n    \"email\": \"pd.parla@alumnos.urjc.es\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				},
+				"description": "Get an user"
+			},
+			"response": []
+		},
+		{
+			"name": "Users: Update email",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"pd.parla@alumnos.urjc.as\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/pdparla",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"pdparla"
+					]
+				},
+				"description": "Get an user"
+			},
+			"response": []
+		},
+		{
+			"name": "Users: Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/pdparla2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"pdparla2"
+					]
+				},
+				"description": "Get an user"
+			},
+			"response": []
+		},
+		{
+			"name": "Book: All information",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/books/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"books",
+						"1"
+					]
+				},
+				"description": "Get all info including comments from a book"
+			},
+			"response": []
+		},
+		{
+			"name": "Comment: Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/comments/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"comments",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
