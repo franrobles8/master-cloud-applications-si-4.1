@@ -5,6 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 
 @Entity
@@ -21,19 +24,20 @@ public class Comment implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private @Setter(AccessLevel.PROTECTED) String id;
-    private String name;
-    private String value;
+    private @Setter(AccessLevel.PROTECTED) Long id;
+    private String text;
 
     @Min(value = 0L, message = "The score should be positive")
     @Max(value = 5L, message = "The score should be five or less")
     private double score;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "nickname")
+    @JsonIgnore
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
+    @JsonIgnore
     private Book book;
 }

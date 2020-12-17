@@ -28,7 +28,7 @@ public interface CommentsController {
             @ApiResponse(responseCode = "404", description = "Book not found"),
             @ApiResponse(responseCode = "500", description = "Internal server error") })
     @PostMapping(value="/{id}")
-    ResponseEntity<String> postComment(@PathVariable(value = "id") String bookId,
+    ResponseEntity<Long> postComment(@PathVariable(value = "id") String bookId,
                                        @RequestBody CommentsDto commentDto);
 
     @Operation(

@@ -16,8 +16,7 @@ public class CommentsDto {
     @NotBlank
     private String nickname;
 
-    private String name;
-    private String value;
+    private String text;
 
     @Min(value = 0L, message = "The score should be positive")
     @Max(value = 5L, message = "The score should be five or less")

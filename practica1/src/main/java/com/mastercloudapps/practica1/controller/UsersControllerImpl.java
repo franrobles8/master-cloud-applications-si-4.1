@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -36,18 +37,19 @@ public class UsersControllerImpl implements UsersController {
     }
 
     @Override
-    public ResponseEntity<String> updateEmail(User user) {
-        return ResponseEntity.ok().body(usersService.update(user));
+    public ResponseEntity<Void> updateEmail(User user) {
+        usersService.updateEmail(user);
+        return ResponseEntity.noContent().build();
     }
 
     @Override
-    public ResponseEntity<User> deleteEmail(String nickname) {
+    public ResponseEntity<Void> deleteUser(String nickname) {
         usersService.delete(nickname);
         return ResponseEntity.noContent().build();
     }
 
     @Override
-    public ResponseEntity<List<Comment>> queryComments(String nickname) {
-        return ResponseEntity.ok().body(usersService.findById(nickname).orElseThrow(NoUserException::new).getComments());
+    public ResponseEntity<Collection<Comment>> queryComments(String nickname) {
+        return ResponseEntity.ok().body(this.usersService.findById(nickname).orElseThrow(NoUserException::new).getComments());
     }
 }

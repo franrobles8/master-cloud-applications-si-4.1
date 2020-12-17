@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 @Service
 public class UsersService {
 
@@ -30,8 +32,10 @@ public class UsersService {
         return usersRepository.save(user).getNickname();
     }
 
-    public String update(User user) {
-        return usersRepository.save(user).getNickname();
+    @Transactional
+    public void updateEmail(User user) {
+        usersRepository.findById(user.getNickname()).orElseThrow(NoUserException::new);
+        usersRepository.updateEmail(user);
     }
 
     public void delete(String nickname) {

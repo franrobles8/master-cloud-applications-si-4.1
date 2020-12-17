@@ -54,7 +54,7 @@ public interface BooksController {
                 content = @Content(schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "500", description = "Internal server error") })
 	@PostMapping(value="/")
-	public ResponseEntity<String> postBook(@RequestBody Book book);
+	public ResponseEntity<Long> postBook(@RequestBody Book book);
 	
 
 

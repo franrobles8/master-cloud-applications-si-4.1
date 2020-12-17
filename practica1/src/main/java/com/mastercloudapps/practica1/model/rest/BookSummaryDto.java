@@ -9,6 +9,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class BookSummaryDto {
     
-    private String id;
+    private Long id;
     private String title;
 }

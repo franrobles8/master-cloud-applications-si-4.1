@@ -1,6 +1,5 @@
 package com.mastercloudapps.practica1.controller;
 
-
 import com.mastercloudapps.practica1.exception.UserWithCommentsException;
 import com.mastercloudapps.practica1.model.Comment;
 import com.mastercloudapps.practica1.model.User;
@@ -14,6 +13,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 
 @Tag(name = "user")
@@ -58,12 +58,12 @@ public interface UsersController {
             description = "Update a user Email",
             tags = { "user" })
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "User successfully updated",
-                    content = @Content(schema = @Schema(implementation = String.class))),
+            @ApiResponse(responseCode = "204", description = "User successfully updated",
+                    content = @Content(schema = @Schema(implementation = Void.class))),
             @ApiResponse(responseCode = "404", description = "User not exists"),
             @ApiResponse(responseCode = "500", description = "Internal server error") })
     @PatchMapping(value="/")
-    public ResponseEntity<String> updateEmail(@RequestBody User user);
+    public ResponseEntity<Void> updateEmail(@RequestBody User user);
 
     @Operation(
             summary = "Delete a user",
@@ -71,12 +71,12 @@ public interface UsersController {
             tags = { "user" })
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "User successfully deleted",
-                    content = @Content(schema = @Schema(implementation = User.class))),
+                    content = @Content(schema = @Schema(implementation = Void.class))),
             @ApiResponse(responseCode = "400", description = "User has comments"),
             @ApiResponse(responseCode = "404", description = "User not exists"),
             @ApiResponse(responseCode = "500", description = "Internal server error") })
     @DeleteMapping(value="/{nickname}")
-    public ResponseEntity<User> deleteEmail(@PathVariable(value="nickname") String nickname) throws UserWithCommentsException;
+    public ResponseEntity<Void> deleteUser(@PathVariable(value="nickname") String nickname) throws UserWithCommentsException;
 
     @Operation(
             summary = "Query for user comments",
@@ -84,9 +84,9 @@ public interface UsersController {
             tags = { "user" })
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Comments successfully retrieved",
-                    content = @Content(schema = @Schema(implementation = List.class))),
+                    content = @Content(schema = @Schema(implementation = Collection.class))),
             @ApiResponse(responseCode = "404", description = "User not found"),
             @ApiResponse(responseCode = "500", description = "Internal server error") })
     @GetMapping(value="/{nickname}/comments")
-    public ResponseEntity<List<Comment>> queryComments(@PathVariable(value="nickname") String nickname);
+    public ResponseEntity<Collection<Comment>> queryComments(@PathVariable(value="nickname") String nickname);
 }

@@ -16,7 +16,7 @@ public class BooksService {
         this.booksRepository = booksRepository;
     }
 
-    public String save(Book book) {
+    public Long save(Book book) {
         return this.booksRepository.save(book).getId();
     }
 
@@ -24,11 +24,11 @@ public class BooksService {
         return this.booksRepository.findAll();
     }
 
-    public Optional<Book> findById(String id) {
+    public Optional<Book> findById(Long id) {
         return this.booksRepository.findById(id);
     }
 
-    public void delete(String id) {
+    public void delete(Long id) {
             this.booksRepository.deleteById(id);
     }
     

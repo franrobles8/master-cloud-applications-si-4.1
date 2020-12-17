@@ -36,18 +36,17 @@ public class CommentsControllerImpl implements CommentsController {
     }
 
     @Override
-    public ResponseEntity<String> postComment(String id, CommentsDto commentDto) {
+    public ResponseEntity<Long> postComment(String id, CommentsDto commentDto) {
         log.info("postComment method called");
-        Book book = this.booksService.findById(id).orElseThrow(NoBookException::new);
+        Book book = this.booksService.findById(Long.parseLong(id)).orElseThrow(NoBookException::new);
         Comment comment = new Comment();
         comment.setBook(book);
-        comment.setName(commentDto.getName());
-        comment.setValue(commentDto.getValue());
+        comment.setText(commentDto.getText());
         comment.setScore(commentDto.getScore());
         User user = this.usersService.findById(commentDto.getNickname()).orElseThrow(NoUserException::new);
         comment.setUser(user);
 
-        String commentId = this.commentsService.save(comment);
+        Long commentId = this.commentsService.save(comment);
 
         URI location = fromCurrentRequest().path("/{id}")
                 .buildAndExpand(commentId).toUri();
@@ -57,7 +56,7 @@ public class CommentsControllerImpl implements CommentsController {
     @Override
     public ResponseEntity<Void> deleteComment(String commentId) {
         log.info("deleteComment method called");
-        commentsService.delete(commentId);
+        commentsService.delete(Long.parseLong(commentId));
         return ResponseEntity.noContent().build();
     }
 }
