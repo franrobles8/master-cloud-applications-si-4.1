@@ -27,25 +27,25 @@ npm start
 ## Books routes:
 
 ### Get all the books:
-Method: **GET**
-Route: `/books`
-Ex. Payload: **none**
-Responses:
-**200 (Success)**
-**500 (Internal Server Error)**
+Method: **GET** <br>
+Route: `/books` <br>
+Ex. Payload: **none** <br>
+Responses: <br>
+**200 (Success)** <br>
+**500 (Internal Server Error)** <br>
 
 ### Get a book by its id:
-Method: **GET**
-Route: `/books/:id`
-Ex. Payload: **none**
-Responses:
-**200 (Success)**
-**500 (Internal Server Error)**
+Method: **GET** <br>
+Route: `/books/:id` <br>
+Ex. Payload: **none** <br>
+Responses: <br>
+**200 (Success)** <br>
+**500 (Internal Server Error)** <br>
 
 ### Create a book:
-Method: **POST**
-Route: `/books`
-Ex. Payload:
+Method: **POST** <br>
+Route: `/books` <br>
+Ex. Payload: <br>
 
 ```json
 {
@@ -57,15 +57,15 @@ Ex. Payload:
 }
 ```
 
-Responses:
-**201 (Created)**
-**400 (Invalid payload)**
-**500 (Internal Server Error)**
+Responses: <br>
+**201 (Created)** <br>
+**400 (Invalid payload)** <br>
+**500 (Internal Server Error)** <br>
 
 ### Create a comment in a book:
-Method: **POST**
-Route: `/books/:id/comments`
-Ex. Payload:
+Method: **POST** <br>
+Route: `/books/:id/comments` <br>
+Ex. Payload: <br>
 
 ```json
 {
@@ -75,55 +75,55 @@ Ex. Payload:
 }
 ```
 
-Responses:
-**201 (Created)**
-**400 (Invalid payload, Invalid id format)**
-**500 (Internal Server Error)**
+Responses: <br>
+**201 (Created)** <br>
+**400 (Invalid payload, Invalid id format)** <br>
+**500 (Internal Server Error)** <br>
 
 ### Delete a comment from a book:
-Method: **DELETE**
-Route: `/books/:id/comments/:commentId`
-Ex. Payload: **none**
-Responses:
-**200 (Success)**
-**400 (Invalid id format)**
-**404 (Book not found, Comment not found)**
-**500 (Internal Server Error)**
+Method: **DELETE** <br>
+Route: `/books/:id/comments/:commentId` <br>
+Ex. Payload: **none** <br>
+Responses: <br>
+**200 (Success)** <br>
+**400 (Invalid id format)** <br>
+**404 (Book not found, Comment not found)** <br>
+**500 (Internal Server Error)** <br>
 
 ## Users routes:
 
 ### Get all the users:
-Method: **GET**
-Route: `/users`
-Ex. Payload: **none**
-Responses:
-**200 (Success)**
-**500 (Internal Server Error)**
+Method: **GET** <br>
+Route: `/users` <br>
+Ex. Payload: **none** <br>
+Responses: <br>
+**200 (Success)** <br>
+**500 (Internal Server Error)** <br>
 
 ### Get a user by its id:
-Method: **GET**
-Route: `/users/:id`
-Ex. Payload: **none**
-Responses:
-**200 (Success)**
-**400 (Invalid id format)**
-**404 (User not found)**
-**500 (Internal Server Error)**
+Method: **GET** <br>
+Route: `/users/:id` <br>
+Ex. Payload: **none** <br>
+Responses: <br>
+**200 (Success)** <br>
+**400 (Invalid id format)** <br>
+**404 (User not found)** <br>
+**500 (Internal Server Error)** <br>
 
 ### Get all the comments of a user:
-Method: **GET**
-Route: `/users/:id/comments`
-Ex. Payload: **none**
-Responses:
-**200 (Success)**
-**400 (Invalid id format)**
-**404 (User not found)**
-**500 (Internal Server Error)**
+Method: **GET** <br>
+Route: `/users/:id/comments` <br>
+Ex. Payload: **none** <br>
+Responses: <br>
+**200 (Success)** <br>
+**400 (Invalid id format)** <br>
+**404 (User not found)** <br>
+**500 (Internal Server Error)** <br>
 
 ### Create a user:
-Method: **POST**
-Route: `/users`
-Ex. Payload: 
+Method: **POST** <br>
+Route: `/users` <br>
+Ex. Payload: <br>
 
 ```json
 {
@@ -132,16 +132,16 @@ Ex. Payload:
 }
 ```
 
-Responses:
-**201 (Created)**
-**400 (Invalid payload)**
-**403 (User with that nickname exists)**
-**500 (Internal Server Error)**
+Responses: <br>
+**201 (Created)** <br>
+**400 (Invalid payload)** <br>
+**403 (User with that nickname exists)** <br>
+**500 (Internal Server Error)** <br>
 
 ### Update the email of a user:
-Method: **PUT**
-Route: `/users/:id`
-Ex. Payload: 
+Method: **PUT** <br>
+Route: `/users/:id` <br>
+Ex. Payload:  <br>
 
 ```json
 {
@@ -149,19 +149,19 @@ Ex. Payload:
 }
 ```
 
-Responses:
-**200 (Success)**
-**400 (Invalid payload, Invalid id format)**
-**404 (User not found)**
-**500 (Internal Server Error)**
+Responses: <br>
+**200 (Success)** <br>
+**400 (Invalid payload, Invalid id format)** <br>
+**404 (User not found)** <br>
+**500 (Internal Server Error)** <br>
 
 ### Delete a user:
-Method: **DELETE**
-Route: `/users/:id`
-Ex. Payload: **none**
-Responses:
-**200 (Success)**
-**400 (Invalid id format)**
-**403 (User has comments)**
-**404 (User not found)**
-**500 (Internal Server Error)**
+Method: **DELETE** <br>
+Route: `/users/:id` <br>
+Ex. Payload: **none** <br>
+Responses: <br>
+**200 (Success)** <br>
+**400 (Invalid id format)** <br>
+**403 (User has comments)** <br>
+**404 (User not found)** <br>
+**500 (Internal Server Error)** <br>
